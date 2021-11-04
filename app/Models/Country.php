@@ -5,11 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Director extends Model
+class Country extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'initials', 'language_id'];
+
+    public function language(){
+        return $this->belongsTo(Language::class);
+    }
 
     public function movies(){
         return $this->hasMany(Movie::class);

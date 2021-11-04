@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>@yield('title') - Movies Catalog</title>
+    <title>@yield('title') - Cadastro Cliente</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sticky-footer-navbar/">
 
@@ -58,19 +58,13 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>--}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('genres.index')}}">Generos</a>
+                        <a class="nav-link" href="{{route('cliente.index')}}">Cliente</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('directors.index')}}">Diretores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('languages.index')}}">Idiomas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('countries.index')}}">Paises</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('movies.index')}}">Filmes</a>
                     </li>
                     {{--<li class="nav-item">
                         <a class="nav-link disabled">Disabled</a>

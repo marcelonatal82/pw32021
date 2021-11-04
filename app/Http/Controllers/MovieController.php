@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Director;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 
-class DirectorController extends Controller
+class MovieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class DirectorController extends Controller
      */
     public function index()
     {
-        $directors = Director::all();
-        return view('admin.directors.index', compact('directors'));
+        $movies = Movie::all();
+        return view('admin.movies.index', compact('movies'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DirectorController extends Controller
      */
     public function create()
     {
-        return view('admin.directors.create');
+        //
     }
 
     /**
@@ -36,54 +36,51 @@ class DirectorController extends Controller
      */
     public function store(Request $request)
     {
-        Director::create($request->all());
-        return redirect()->route('directors.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Director  $director
+     * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function show(Director $director)
+    public function show(Movie $movie)
     {
-        return abort(404);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Director  $director
+     * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Director $director)
+    public function edit(Movie $movie)
     {
-        return view('admin.directors.edit', compact('director'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Director  $director
+     * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Director $director)
+    public function update(Request $request, Movie $movie)
     {
-        $director->update($request->all());
-        return redirect()->route('directors.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Director  $director
+     * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Director $director)
+    public function destroy(Movie $movie)
     {
-        $director->delete();
-        return redirect()->route('directors.index');
+        //
     }
 }

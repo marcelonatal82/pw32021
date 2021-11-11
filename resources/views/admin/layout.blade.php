@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="h-100">
+<html lang="br" class="h-100">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,10 +76,23 @@
                         <a class="nav-link disabled">Disabled</a>
                     </li>--}}
                 </ul>
-                <form class="d-flex">
+               {{-- <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                </form>--}}
+                    @if (Route::has('login'))
+                        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                            @auth
+                                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                            @else
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
             </div>
         </div>
     </nav>
@@ -92,7 +105,7 @@
         @yield('content')
     </div>
 </main>
-
+<img src="img/logo_topcine.jpg"  width=100% height=100% >
 <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
         <span class="text-muted">&copy; Sexto periodo TADS - 2021</span>

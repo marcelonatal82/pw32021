@@ -14,27 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('genres.index');
-});
-
-Route::get('/teste/{nome}', function ($nome){
-    return "<h1>Ola ".$nome."!</h1>";
-});
-
-Route::get('/soma/{n1}/{n2}', function ($n1, $n2){
-    return "<h1>A soma e: ".$n1+$n2."!</h1>";
-});
-
-Route::get('layout', function (){
     return view('admin.layout');
 });
 
-//Route::get('genres', [\App\Http\Controllers\GenreController::class, 'index']);
-Route::prefix('admin')->group(function (){
-    Route::resource('genres', \App\Http\Controllers\GenreController::class);
-    Route::resource('directors', \App\Http\Controllers\DirectorController::class);
-    Route::resource('languages', \App\Http\Controllers\LanguageController::class);
-    Route::resource('countries', \App\Http\Controllers\CountryController::class);
-    Route::resource('movies', \App\Http\Controllers\MovieController::class);
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
+Route::resource('admin.layout', \App\Http\Controllers\Controller::class)->middleware('auth');
+
+Route::prefix('admin')->group(function (){
+    Route::resource('genres', \App\Http\Controllers\GenreController::class)->middleware('auth');
+    Route::resource('directors', \App\Http\Controllers\DirectorController::class)->middleware('auth');
+    Route::resource('languages', \App\Http\Controllers\LanguageController::class)->middleware('auth');
+    Route::resource('countries', \App\Http\Controllers\CountryController::class)->middleware('auth');
+    Route::resource('movies', \App\Http\Controllers\MovieController::class)->middleware('auth');
+});
+require __DIR__.'/auth.php';

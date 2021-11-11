@@ -5,11 +5,11 @@
 @section('page-title', 'Gerenciamento de Diretores')
 
 @section('content')
-    <a href="{{route('directors.create')}}" class="btn btn-success">Novo Diretor</a>
+    <a href="{{route('directors.create')}}" class="btn btn-success">Novo diretor</a>
     <table class="table table-hover">
         <thead>
             <tr>
-                <th class="main-col">Diretor</th>
+                <th class="main-col">Genero</th>
                 <th>-</th>
             </tr>
         </thead>

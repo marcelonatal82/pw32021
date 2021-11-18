@@ -72,19 +72,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('movies.index')}}">Filmes</a>
                     </li>
-                    {{--<li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>--}}
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    </li>
                 </form>
             </div>
         </div>
     </nav>
 </header>
-
+<br><br>
 <!-- Begin page content -->
 <main class="flex-shrink-0">
     <div class="container">

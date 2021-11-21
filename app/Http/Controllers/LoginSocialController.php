@@ -9,52 +9,54 @@ use Laravel\Socialite\Facades\Socialite;
 
 class LoginSocialController extends Controller
 {
-    //
-    public  function  redirectToProvider($provider){
-        return Socialite::driver($provider)->redirect();
+//    //
+//    public  function  redirectToProvider($provider){
+//        return Socialite::driver($provider)->redirect();
+//    }
+//
+//    public function  handleProviderCallback($provider){
+//        $user = Socialite::driver($provider)->stateless()->user();
+//        dd();
+//        if ($this->loginOrRegister($user)){
+//            return redirect()->route('dashboard');
+//        };
+//    }
+
+
+    public  function  redirectToGoogle(){
+        return Socialite::driver('google')->redirect();
     }
 
-    public function  handleProviderCallback($provider){
-        $user = Socialite::driver($provider)->stateless()->user();
+    public function  handleGoogleCallback(){
+        $user = Socialite::driver('google')->stateless()->user();
+        dd();
+        if ($this->loginOrRegister($user)){
+            return redirect()->route('dashboard');
+        };
+    }
+    //
+    public  function  redirectToGithub(){
+        return Socialite::driver('github')->redirect();
+    }
+
+    public function  handleGitHubCallback(){
+        $user = Socialite::driver('github')->stateless()->user();
         if ($this->loginOrRegister($user)){
             return redirect()->route('dashboard');
         };
     }
 
-    //
-//    public  function  redirectToGoogle(){
-//        return Socialite::driver('google')->redirect();
-//    }
-//
-//    public function  handleGoogleCallback(){
-//        $user = Socialite::driver('google')->stateless()->user();
-//        if ($this->loginOrRegister($user)){
-//            return redirect()->route('dashboard');
-//        };
-//    }
-//    //
-//    public  function  redirectToGithub(){
-//        return Socialite::driver('github')->redirect();
-//    }
-//
-//    public function  handleGitHubCallback(){
-//        $user = Socialite::driver('github')->stateless()->user();
-//        if ($this->loginOrRegister($user)){
-//            return redirect()->route('dashboard');
-//        };
-//    }
-//
-//
-//    public  function  redirectToFacebook(){
-//        return Socialite::driver('facebook')->redirect();
-//    }
-//
-//    public function  handleFacebookCallback(){
-//        $user = Socialite::driver('facebook')->stateless()->user();
-//        if ($this->loginOrRegister($user)){
-//            return redirect()->route('dashboard');
-//        };
-//    }
+
+    public  function  redirectToFacebook(){
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function  handleFacebookCallback(){
+        $user = Socialite::driver('facebook')->stateless()->user();
+        if ($this->loginOrRegister($user)){
+            return redirect()->route('dashboard');
+        };
+    }
 
     private function loginOrRegister($data){
         $user = User::where('email', '=', $data->email)->first();
@@ -83,4 +85,4 @@ class LoginSocialController extends Controller
         return redirect()->route('dashboard');
     }
 }
-/*ATENCAO PAREI NO MINUTO 31:20 DO VIDEO DO RENATO*/
+

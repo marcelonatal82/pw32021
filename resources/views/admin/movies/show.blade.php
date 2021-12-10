@@ -1,54 +1,28 @@
 @extends('admin.layout')
 
-@section('title', 'Visualizar Filmes')
+@section('title', 'Gerenciamento de Filmes')
 
-@section('page-title', 'Visualizar  de Filmes')
+@section('page-title', 'Visualizacao de Filme')
 
 @section('content')
-    <form method="post" action="{{route('movies.show')}}" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="title">Titulo</label>
-            <input type="text" name="title" id="title" value="{{$movie->title}}">
-        </div>
-        <div class="form-group">
-            <label for="cover">Capa</label>
-            <input type="file" name="cover" id="cover" value="{{$nameFile}}" required>
-        </div>
-        <div class="form-group">
-            <label for="trailer">Trailer</label>
-            <input type="text" name="trailer" id="trailer" value="{{$movies->trailer}}">
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-6">
-                    <label for="year">Ano</label>
-                    <input type="number" name="year" id="year" value="{{$movies->year}}" required>
-                </div>
-                <div class="col-6">
-                    <label for="time">Duracao (min)</label>
-                    <input type="number" name="time" id="time" value="{{$movies->time}}"  required>
+    <div class="card mb-3" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{\Illuminate\Support\Facades\Storage::url('movies/').$movie->cover}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{$movie->title}}</h5>
+                    <p class="card-text"><strong>Sinopse:</strong> {{$movie->synopsis}}</p>
+                    <p class="card-text"><strong>Ano:</strong> {{$movie->year}}</p>
+                    <p class="card-text"><strong>Duracao:</strong> {{$movie->time}}</p>
+                    <p class="card-text"><strong>Trailer:</strong> <a href="{{$movie->trailer}}" target="_blank">Assista aqui</a></p>
+                    <p class="card-text"><strong>Pais:</strong> {{$movie->country->name}}</p>
+                    <p class="card-text"><strong>Genero:</strong> {{$movie->genre->description}}</p>
+                    <p class="card-text"><strong>Diretor:</strong> {{$movie->director->name}}</p>
+                    <a href="{{route('movies.index')}}" class="btn btn-primary">Voltar</a>
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="country">Pais</label>
-            <input name="country_id" id="country" value="{{$movies->country->id}}" required>
-            </input>
-        </div>
-        <div class="form-group">
-            <label for="genre">Genero</label>
-            <input name="genre_id" id="genre" class="form-control" value="{{$genre->id}}" required>
-        </div>
-        </div>
-        <div class="form-group">
-            <label for="director">Diretor</label>
-            <input name="director_id" id="director" value="{{$director_id}}">
-            </input>
-        </div>
-        <div class="form-group">
-            <label for="synopsis">Sinopse</label>
-            <textarea name="synopsis" id="synopsis" cols="30" rows="10" value="{{$movies->sinopsis}}"></textarea>
-        </div>
-    </form>
+    </div>
 @endsection

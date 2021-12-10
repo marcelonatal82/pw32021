@@ -8,7 +8,6 @@ use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\Console\Input\Input;
 
 class MovieController extends Controller
 {
@@ -50,7 +49,7 @@ class MovieController extends Controller
             $name = uniqid(date('HisYmd'));
             $extesion = $request->cover->extension();
             $nameFile = "{$name}.{$extesion}";
-            $upload = $request->cover->storeAs('movies', $nameFile);
+            $upload = $request->cover->storeAs('public/movies', $nameFile);
             if(!$upload){
                 return redirect()
                         ->back()
@@ -83,7 +82,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        return view('admin.movies.show', compact('movie'));
     }
 
     /**
@@ -109,22 +108,20 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        //se for enviado algum arquivo de capa pelo formulario entao deve-se excluir o arquivo no servidor, fazer o upload do novo arquivo e atualizar os dados no banco
-        //caso nao seja enviado um novo arquivo de capa somente atualize os dados do banco.
-            $path = Storage::get('cover', $request->file('cover'));
-            $movie ->update([
-                'title' => $request->title,
-                'synopsis' => $request->synopsis,
-                'year' => $request->year,
-                'trailer' => $request->trailer,
-                'time' => $request->time,
-                'cover' => $path,
-                'country_id' => $request->country_id,
-                'genre_id' => $request->genre_id,
-                'director_id' => $request->director_id
+            $path = Storage :: get( 'cover' , $request -> file ( 'cover'));
+            $movie -> update ([
+                'title' => $request -> title ,
+                'synopsis' => $request -> synopsis ,
+                'year' => $request -> year ,
+                'trailer' => $request -> trailer ,
+                'time' => $request -> time ,
+                'cover' => $path ,
+                'country_id' => $request -> country_id ,
+                'genre_id' => $request -> genre_id ,
+                'director_id' => $request -> director_id
             ]);
 
-            return redirect()->route('movies.index')->with('success','Registro alterado com sucesso.');
+            return  redirect () -> route ( 'movies.index' ) -> with ( 'sucesso' , 'Registro alterado com sucesso.' );
 
     }
 
@@ -136,7 +133,7 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        $image_path = storage_path('app/movies/').$movie->cover;
+        $image_path = storage_path('app/public/movies/').$movie->cover;
         unlink($image_path);
         $movie->delete();
         return redirect()->route('movies.index')->with('message', 'Registro excluido com sucesso');

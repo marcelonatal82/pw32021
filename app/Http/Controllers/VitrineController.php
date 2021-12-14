@@ -15,6 +15,9 @@ class VitrineController extends Controller
     }
 
     public function showmovie(Movie $movie){
-        return dd($movie);
+        //return dd($movie);
+        return view('vitrine.showmovie', compact('movie'));
+
+
     }
 }

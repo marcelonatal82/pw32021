@@ -75,7 +75,7 @@
 
         <h4 style="color: red; text-align: center; margin: 0px 0px 0px 0px; font-size: 28px; font-weight: bold;">LOCADORA MOVIES</h4>
         </br>
-        <a href="index.html">&nbsp;Início&nbsp;</a>
+        <a href="{{route('movies.index')}}">&nbsp;Início&nbsp;</a>
         <a href="#">&nbsp;Series&nbsp;</a>
         <a href="#">&nbsp;Filmes&nbsp;</a>
 

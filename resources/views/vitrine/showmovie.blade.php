@@ -56,7 +56,7 @@
                     <p class="card-text"><strong>Pais:</strong> {{$movie->country->name}}</p>
                     <p class="card-text"><strong>Genero:</strong> {{$movie->genre->description}}</p>
                     <p class="card-text"><strong>Diretor:</strong> {{$movie->director->name}}</p>
-                    <a href="{{route('vitrine.showmovie', $movie)}}" class="btn btn-primary">Voltar</a>
+{{--                    <a href="{{route('vitrine.showmovie',$movie}}" class="btn btn-primary">Voltar</a>--}}
                 </div>
             </div>
         </div>
